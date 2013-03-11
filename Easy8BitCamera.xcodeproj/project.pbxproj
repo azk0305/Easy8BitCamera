@@ -18,6 +18,9 @@
 		A58ABC9216E33C2F003F18C8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A58ABC9116E33C2F003F18C8 /* Default-568h@2x.png */; };
 		A58ABC9516E33C2F003F18C8 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58ABC9316E33C2F003F18C8 /* MainStoryboard.storyboard */; };
 		A58ABC9816E33C2F003F18C8 /* Easy8BitCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58ABC9716E33C2F003F18C8 /* Easy8BitCameraViewController.m */; };
+		A58ABC9F16E3520C003F18C8 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58ABC9E16E3520C003F18C8 /* CoreImage.framework */; };
+		A58ABCA116E37961003F18C8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58ABCA016E37961003F18C8 /* Social.framework */; };
+		A58ABCA416E3AC81003F18C8 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58ABCA316E3AC81003F18C8 /* SettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,10 @@
 		A58ABC9416E33C2F003F18C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		A58ABC9616E33C2F003F18C8 /* Easy8BitCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Easy8BitCameraViewController.h; sourceTree = "<group>"; };
 		A58ABC9716E33C2F003F18C8 /* Easy8BitCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Easy8BitCameraViewController.m; sourceTree = "<group>"; };
+		A58ABC9E16E3520C003F18C8 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		A58ABCA016E37961003F18C8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		A58ABCA216E3AC81003F18C8 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		A58ABCA316E3AC81003F18C8 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A58ABCA116E37961003F18C8 /* Social.framework in Frameworks */,
+				A58ABC9F16E3520C003F18C8 /* CoreImage.framework in Frameworks */,
 				A58ABC7C16E33C2F003F18C8 /* UIKit.framework in Frameworks */,
 				A58ABC7E16E33C2F003F18C8 /* Foundation.framework in Frameworks */,
 				A58ABC8016E33C2F003F18C8 /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +82,8 @@
 		A58ABC7A16E33C2F003F18C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A58ABCA016E37961003F18C8 /* Social.framework */,
+				A58ABC9E16E3520C003F18C8 /* CoreImage.framework */,
 				A58ABC7B16E33C2F003F18C8 /* UIKit.framework */,
 				A58ABC7D16E33C2F003F18C8 /* Foundation.framework */,
 				A58ABC7F16E33C2F003F18C8 /* CoreGraphics.framework */,
@@ -88,6 +99,8 @@
 				A58ABC9316E33C2F003F18C8 /* MainStoryboard.storyboard */,
 				A58ABC9616E33C2F003F18C8 /* Easy8BitCameraViewController.h */,
 				A58ABC9716E33C2F003F18C8 /* Easy8BitCameraViewController.m */,
+				A58ABCA216E3AC81003F18C8 /* SettingViewController.h */,
+				A58ABCA316E3AC81003F18C8 /* SettingViewController.m */,
 				A58ABC8216E33C2F003F18C8 /* Supporting Files */,
 			);
 			path = Easy8BitCamera;
@@ -177,6 +190,7 @@
 				A58ABC8816E33C2F003F18C8 /* main.m in Sources */,
 				A58ABC8C16E33C2F003F18C8 /* Easy8BitCameraAppDelegate.m in Sources */,
 				A58ABC9816E33C2F003F18C8 /* Easy8BitCameraViewController.m in Sources */,
+				A58ABCA416E3AC81003F18C8 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +278,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Easy8BitCamera/Easy8BitCamera-Prefix.pch";
 				INFOPLIST_FILE = "Easy8BitCamera/Easy8BitCamera-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -275,6 +290,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Easy8BitCamera/Easy8BitCamera-Prefix.pch";
 				INFOPLIST_FILE = "Easy8BitCamera/Easy8BitCamera-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -299,6 +315,7 @@
 				A58ABC9D16E33C2F003F18C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
