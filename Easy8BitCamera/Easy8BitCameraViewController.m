@@ -140,30 +140,31 @@ SLComposeViewController *socialViewController;
     
     CIContext *context = [CIContext contextWithOptions:nil];
     CIImage *inputImage = [[CIImage alloc] initWithImage:selectedImage];
-    
-    CIImage *firstImage;
-    if ([enableMonochrome intValue] == 1) {
-        CIFilter *filter0 = [CIFilter filterWithName:@"CIColorMonochrome" keysAndValues:kCIInputImageKey, inputImage, nil];
-        [filter0 setValue:[CIColor colorWithRed:0.75 green:0.75 blue:0.75] forKey:@"inputColor"];
-        firstImage = [filter0 outputImage];
-        inputImage = nil;
-        filter0 = nil;
-        selectedImage = nil;
-    } else {
-        firstImage = inputImage;
-    }
-    
-    CIFilter *filter = [CIFilter filterWithName:@"CIPixellate" keysAndValues:kCIInputImageKey, firstImage, nil];
-    [filter setValue:[pixellateScaleArray objectAtIndex:[pixellateScale intValue]] forKey:@"inputScale"];
-    CIImage *middleImage = [filter outputImage];
-    filter = nil;
-    firstImage = nil;
-    
-    CIFilter *filter2 = [CIFilter filterWithName:@"CIColorPosterize" keysAndValues:kCIInputImageKey, middleImage, nil];
-    [filter2 setValue:[posterizeLevelArray objectAtIndex:[posterizeLevel intValue]] forKey:@"inputLevels"];
-    CIImage *outputImage = [filter2 outputImage];
-    filter2 = nil;
-    middleImage = nil;
+     
+    CIImage *outputImage = ^(CIImage *middleImage) {
+         CIFilter *filter2 = [CIFilter filterWithName:@"CIColorPosterize" keysAndValues:kCIInputImageKey, middleImage, nil];
+         [filter2 setValue:[posterizeLevelArray objectAtIndex:[posterizeLevel intValue]] forKey:@"inputLevels"];
+         
+         return [filter2 outputImage];
+    }(
+       ^(CIImage *firstImage) {
+           CIFilter *filter = [CIFilter filterWithName:@"CIPixellate" keysAndValues:kCIInputImageKey, firstImage, nil];
+           [filter setValue:[pixellateScaleArray objectAtIndex:[pixellateScale intValue]] forKey:@"inputScale"];
+     
+           return [filter outputImage];
+       }(
+         ^(CIImage *inputImage) {
+             if ([enableMonochrome intValue] == 1) {
+                 CIFilter *filter0 = [CIFilter filterWithName:@"CIColorMonochrome" keysAndValues:kCIInputImageKey, inputImage, nil];
+                 [filter0 setValue:[CIColor colorWithRed:0.75 green:0.75 blue:0.75] forKey:@"inputColor"];
+                 
+                 return [filter0 outputImage];
+             } else {
+                 return inputImage;
+             }
+         }(inputImage)
+        )
+    );
     
     
     CGImageRef cgImage = [context createCGImage:outputImage fromRect:[outputImage extent]];
